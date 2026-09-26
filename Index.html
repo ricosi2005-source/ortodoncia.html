@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr. Sonrisas | Ortodoncia & Estética Dental</title>
+  <meta name="description" content="Diseño de sonrisa, brackets invisibles y ortodoncia especializada. Agenda tu cita.">
+  
+  <!-- Open Graph para vista previa al compartir por WhatsApp -->
+  <meta property="og:title" content="Dr. Sonrisas - Ortodoncia Especializada">
+  <meta property="og:description" content="Transforma tu sonrisa. Consulta tratamientos, precios y agenda tu valoración en línea.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500">
+  <meta property="og:type" content="website">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    
+    body { 
+      background: #080c14; 
+      color: #ffffff; 
+      display: flex; 
+      justify-content: center; 
+      padding: 25px 15px; 
+      min-height: 100vh; 
+    }
+
+    .container { width: 100%; max-width: 440px; text-align: center; }
+    
+    .avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 3px solid #00f2fe; 
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+      object-fit: cover; margin-bottom: 12px;
+    }
+    
+    h1 { color: #ffffff; font-size: 1.6rem; letter-spacing: 1px; font-weight: 800; }
+    .subtitle { color: #00f2fe; font-size: 0.95rem; font-weight: 500; margin-bottom: 12px; }
+    
+    .status-badge { 
+      display: inline-block; 
+      background: rgba(0, 242, 254, 0.1); 
+      border: 1px solid #00f2fe; 
+      color: #00f2fe; 
+      padding: 5px 14px; 
+      border-radius: 20px; 
+      font-size: 0.8rem; 
+      font-weight: 600; 
+      margin-bottom: 25px; 
+    }
+
+    .button-stack { display: flex; flex-direction: column; gap: 12px; }
+    
+    .button {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 15px 20px; border-radius: 12px;
+      background: #111827; color: #e2e8f0; 
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      font-size: 0.95rem; font-weight: 600; text-decoration: none; cursor: pointer;
+      transition: all 0.3s ease-in-out; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    
+    .button:hover, .button:active {
+      background: #00f2fe; color: #080c14; border-color: #00f2fe;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.6); 
+      transform: translateY(-2px);
+    }
+
+    .button-whatsapp {
+      background: #25D366 !important; color: #ffffff !important; border: none !important;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;
+    }
+    .button-whatsapp:hover {
+      box-shadow: 0 0 22px rgba(37, 211, 102, 0.7) !important;
+    }
+
+    /* VENTANAS EMERGENTES (MODALES) */
+    .modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(8, 12, 20, 0.88); backdrop-filter: blur(6px);
+      z-index: 1000; padding: 20px; align-items: center; justify-content: center;
+    }
+    
+    .modal-content {
+      background: #111827; border: 2px solid #00f2fe; padding: 25px 20px;
+      border-radius: 16px; max-width: 380px; width: 100%; text-align: left;
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.3); margin: auto;
+    }
+    
+    .modal-content h2 { color: #00f2fe; font-size: 1.3rem; margin-bottom: 14px; text-align: center; }
+    .modal-content p, .modal-content li { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px; }
+    .modal-content ul { list-style: none; padding: 0; }
+    .modal-content li::before { content: "🔹 "; }
+    
+    .close-btn {
+      display: block; width: 100%; margin-top: 20px; padding: 12px;
+      background: #00f2fe; color: #080c14; font-weight: bold; border: none;
+      border-radius: 10px; cursor: pointer; text-align: center; font-size: 0.95rem;
+    }
+
+    footer { margin-top: 30px; font-size: 0.8rem; color: #64748b; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Foto del Odontólogo / Logo -->
+    <img class="avatar" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=300" alt="Dr. Sonrisas Ortodoncia">
+    
+    <h1>DR. SONRISAS</h1>
+    <p class="subtitle">Ortodoncia Especializada & Estética Dental</p>
+    <span class="status-badge">🟢 Consultorio Abierto | Agenda Disponible</span>
+
+    <nav class="button-stack">
+      <!-- Botón Principal: WhatsApp -->
+      <a class="button button-whatsapp" href="https://wa.me/573000000000?text=Hola!%20Me%20gustar%C3%ADa%20agendar%20mi%20valoraci%C3%B3n%20de%20ortodoncia" target="_blank" rel="noopener">
+        🦷 Agendar Valoración por WhatsApp
+      </a>
+
+      <!-- Ventana Emergente 1: Tratamientos -->
+      <button class="button" onclick="openModal('modal-tratamientos')">
+        💎 Tipos de Brackets y Tratamientos
+      </button>
+
+      <!-- Ventana Emergente 2: Horario y Dirección -->
+      <button class="button" onclick="openModal('modal-horarios')">
+        🕐 Horario de Atención y Ubicación
+      </button>
+
+      <!-- Ventana Emergente 3: Urgencias y Cuidados -->
+      <button class="button" onclick="openModal('modal-cuidados')">
+        🚨 ¿Se te soltó un bracket? (Urgencias)
+      </button>
+
+      <!-- Ventana Emergente 4: Métodos de Pago -->
+      <button class="button" onclick="openModal('modal-pagos')">
+        💳 Planes de Financiación y Pagos
+      </button>
+
+      <!-- Enlace Externo: Instagram -->
+      <a class="button" href="https://instagram.com" target="_blank" rel="noopener">
+        📸 Casos de Éxito (Antes y Después)
+      </a>
+
+      <!-- Enlace Externo: Google Maps -->
+      <a class="button" href="https://maps.google.com" target="_blank" rel="noopener">
+        📍 Cómo llegar con Google Maps
+      </a>
+    </nav>
+
+    <footer>
+      <p>© 2026 Dr. Sonrisas | Registro Médico Nº 987654</p>
+    </footer>
+  </div>
+
+  <!-- ESTRUCTURA DE LAS VENTANAS FLOTANTES (MODALES) -->
+
+  <!-- Modal 1: Tratamientos -->
+  <div id="modal-tratamientos" class="modal">
+    <div class="modal-content">
+      <h2>💎 Nuestros Tratamientos</h2>
+      <ul>
+        <li><strong>Brackets Metálicos:</strong> Alta resistencia y máxima efectividad.</li>
+        <li><strong>Brackets Estéticos (Cerámica/Zafiro):</strong> Discretos y del color de tus dientes.</li>
+        <li><strong>Alineadores Invisibles:</strong> Ortodoncia 100% transparente y removible.</li>
+        <li><strong>Retenedores:</strong> Cuidado y mantenimiento pos-tratamiento.</li>
+      </ul>
+      <button class="close-btn" onclick="closeModal('modal-tratamientos')">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Modal 2: Horarios -->
+  <div id="modal-horarios" class="modal">
+    <div class="modal-content">
+      <h2>🕐 Horario y Ubicación</h2>
+      <p><strong>Lunes a Viernes:</strong> 8:00 AM - 12:00 PM | 2:00 PM - 6:30 PM</p>
+      <p><strong>Sábados:</strong> 8:00 AM - 1:00 PM</p>
+      <p><strong>Domingos y Festivos:</strong> Cerrado</p>
+      <p style="margin-top: 12px; border-top: 1px solid rgba(0,242,254,0.3); padding-top: 10px;">
+        <strong>📍 Dirección:</strong> Calle Principal #10-25, Consultorio 302, Centro Médico.
+      </p>
+      <button class="close-btn" onclick="closeModal('modal-horarios')">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Modal 3: Cuidados y Urgencias -->
+  <div id="modal-cuidados" class="modal">
+    <div class="modal-content">
+      <h2>🚨 Guía de Urgencias</h2>
+      <p><strong>¿Se soltó un bracket?</strong> No intentes arrancarlo. Aplica cera de ortodoncia sobre la zona y agéndate para ajuste.</p>
+      <p><strong>¿Molestia en la mejilla?</strong> Coloca una bolita de cera dental sobre el alambre que hinca.</p>
+      <p><strong>Alimentos prohibidos:</strong> Evita morder hielo, dulces pegajosos, frutos secos duros o morder frutas enteras con los dientes frontales.</p>
+      <button class="close-btn" onclick="closeModal('modal-cuidados')">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Modal 4: Pagos -->
+  <div id="modal-pagos" class="modal">
+    <div class="modal-content">
+      <h2>💳 Facilidades de Pago</h2>
+      <p>✨ <strong>Valoración Inicial:</strong> Incluye diagnóstico visual y plan de tratamiento.</p>
+      <p>✨ <strong>Financiación:</strong> Paga el inicial y diferimos el saldo en cuotas mensuales durante tus controles.</p>
+      <p>✨ <strong>Aceptamos:</strong> Efectivo, Nequi, Bancolombia, Sistecrédito y Tarjetas de Crédito/Débito.</p>
+      <button class="close-btn" onclick="closeModal('modal-pagos')">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT PARA ABRIR Y CERRAR VENTANAS -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // Cerrar la ventana emergente si el usuario hace clic fuera de la caja
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
